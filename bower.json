@@ -1,11 +1,11 @@
 {
-  "name": "mean-template",
+  "name": "casual-jams",
   "version": "0.0.0",
-  "homepage": "https://github.com/nss-cohort-2014-06-07/mean-template",
+  "homepage": "https://github.com/JoyP/casual-jams",
   "authors": [
-    "Chyld Medford <chyld.medford@gmail.com>"
+    "Joy Pratt <joympratt@gmail.com>"
   ],
-  "description": "The MEAN Template",
+  "description": "Joy Pratt",
   "license": "MIT",
   "dependencies": {
     "angular": "1.3.0-rc.2",

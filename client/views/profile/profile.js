@@ -8,15 +8,20 @@
     $scope.toggleUpdate = function(){
       $scope.update = !!!$scope.update;
     };
-//    function success(response){
-//      toastr.success('User successfully registered.');
-//      $location.path('/login');
-//    }
 
-//    function failure(response){
-//      toastr.error('Error during user registration, try again.');
-//      $scope.user = {};
-//    }
+    $scope.update = function(){
+      User.update($scope.user).then(success, failure);
+    };
+
+    function success(response){
+      toastr.success('User successfully registered.');
+      $location.path('/login');
+    }
+
+    function failure(response){
+      toastr.error('Error during user registration, try again.');
+      $scope.user = {};
+    }
 
   }]);
 })();

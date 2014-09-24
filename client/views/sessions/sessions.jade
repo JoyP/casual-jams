@@ -1,0 +1,30 @@
+h3 Sessions
+
+.row
+  .col-xs-9
+  .col-xs-3
+    button.btn.btn-primary(ng-click='toggleNew()', ng-hide='newSession') New Session
+    &nbsp
+    button.btn.btn-primary Find Session
+.row
+  .col-xs-3
+    form(role='form', novalidate, name='newForm', ng-show='newSession')
+      .form-group
+        h3 Create New Session
+      .form-group
+        label(for='name') Session Name
+        input.form-control#name(type='text', name='name', ng-model='session.name', autofocus)
+      .form-group
+        label(for='address') Address
+        input.form-control#address(type='text', name='address', ng-model='session.loc.street')
+      .form-group
+        label(for='location') Location
+        input.form-control#location(type='text', name='location', ng-model='session.loc.city')
+      .form-group
+        label(for='instrument') Session Style
+        input.form-control#style(type='text', name='style', ng-model='session.style')
+      .form-group
+        label(for='musicStyle') Time
+        input.form-control#time(type='text', name='time', ng-model='session.time')
+      button.btn.btn-primary(ng-show='newForm.$valid', ng-click='addNew()') Create
+  .col-xs-9

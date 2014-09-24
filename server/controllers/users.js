@@ -35,3 +35,10 @@ exports.logout = function(req, res){
   });
 };
 
+exports.update = function(req,res){
+  User.findById(req.session.userId, function(err,user){
+    user.save(req.body, function(err, contact){
+      res.send({user:user});
+    });
+  });
+};

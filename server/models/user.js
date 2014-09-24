@@ -32,5 +32,16 @@ User.login = function(o, cb){
   });
 };
 
+User.prototype.save = function(fields, cb){
+  var properties = Object.keys(fields),
+      self       = this;
+
+  properties.forEach(function(property){
+    self[property] = fields[property];
+  });
+
+  User.collection.save(this, cb);
+};
+
 module.exports = User;
 

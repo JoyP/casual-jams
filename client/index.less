@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Rock+Salt|Architects+Daughter|Special+Elite);
 // http://clrs.cc/
 
 @NAVY:    #001F3F;
@@ -18,12 +19,23 @@
 @SILVER:  #DDDDDD;
 
 body{
-  background: @GRAY;
   background-repeat: no-repeat;
-  background-image: url('/img/dance.jpg');
+  background-image: url('/assets/img/redish-notes.jpg');
   background-size: cover;
-  background-position: center;
   color: white;
+}
+
+.navbar{
+  background: #8d1919;
+  a.navbar-brand{
+    color: white;
+    font-family: 'Rock Salt', cursive;
+  }
+  ul.nav{
+    li a{
+      color: white;
+    }
+  }
 }
 
 input.ng-invalid, select.ng-invalid{

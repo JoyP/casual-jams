@@ -7,7 +7,6 @@
     $scope.mySessions = true;
 
     $scope.toggleNew = function(){
-      console.log('$scope.newSession in session controller', $scope.newSession);
       $scope.newSession = true;
       $scope.findSession = false;
       $scope.mySessions = false;

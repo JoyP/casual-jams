@@ -22,7 +22,7 @@
       .form-group
         label(for='musicStyle') Music Style(s)
         input.form-control#musicStyle(type='text', name='musicStyle', ng-model='user.style')
-      button.btn.btn-primary(ng-show='updateForm.$valid', ng-click='update()') Update Profile
+      button.btn.btn-danger(ng-show='updateForm.$valid', ng-click='update()') Update Profile
   .col-xs-9
 .row
   .col-xs-9

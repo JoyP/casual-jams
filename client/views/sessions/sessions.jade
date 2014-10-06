@@ -31,7 +31,7 @@
       .form-group
         label(for='musicStyle') Time
         input.form-control#time(type='text', name='time', ng-model='session.time')
-      button.btn.btn-primary(ng-show='newForm.$valid', ng-click='addNew()') Create
+      button.btn.btn-danger(ng-show='newForm.$valid', ng-click='addNew()') Create
   .col-xs-9
 
 .row(ng-show='findSession')

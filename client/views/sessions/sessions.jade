@@ -1,26 +1,26 @@
 .row
   .col-xs-4
   .col-xs-4
-    h3 Sessions
+    h2 Sessions
   .col-xs-4
 
 .row
-  .col-xs-9
-  .col-xs-3
-    button.btn.btn-primary(ng-click='toggleNew()', ng-hide='newSession') New Session
+  .col-xs-8
+  .col-xs-4
+    button.btn.btn-primary(ng-click='toggleNew()') New Session
     &nbsp
-    button.btn.btn-primary Find Session
-.row
+    button.btn.btn-primary(ng-click='toggleFind()') Find Session
+    &nbsp
+    button.btn.btn-primary(ng-click='toggleMySessions()') My Sessions
+
+.row(ng-show='newSession')
   .col-xs-3
-    form(role='form', novalidate, name='newForm', ng-show='newSession')
+    form(role='form', novalidate, name='newForm')
       .form-group
         h3 Create New Session
       .form-group
         label(for='name') Session Name
         input.form-control#name(type='text', name='name', ng-model='session.name', autofocus)
-      .form-group
-        label(for='address') Address
-        input.form-control#address(type='text', name='address', ng-model='session.loc.street')
       .form-group
         label(for='location') Location
         input.form-control#location(type='text', name='location', ng-model='session.loc.city')
@@ -28,7 +28,33 @@
         label(for='instrument') Session Style
         input.form-control#style(type='text', name='style', ng-model='session.style')
       .form-group
+        label(for='date') Date
+        input.form-control#date(type='text', name='date', ng-model='session.date')
+      .form-group
         label(for='musicStyle') Time
         input.form-control#time(type='text', name='time', ng-model='session.time')
       button.btn.btn-primary(ng-show='newForm.$valid', ng-click='addNew()') Create
   .col-xs-9
+
+.row(ng-show='findSession')
+  .col-xs-12
+    h3 Find Sessions
+    table#sessions.table.table-bordered.table-striped
+      thead
+        tr
+          th Name
+          th Location
+          th Style
+          th Date
+          th Time
+      tbody
+        tr
+          td name
+          td location
+          td style
+          td date
+          td time
+
+.row(ng-show='mySessions')
+  .col-xs-12
+    h3 My Sessions

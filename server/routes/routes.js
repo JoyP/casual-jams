@@ -27,7 +27,7 @@ module.exports = function(app, express){
   app.delete('/logout', users.logout);
 
   app.use(security.bounce);
-  app.post('/update', users.update);
+  app.post('/profile', users.update);
   app.get('/profile', users.find);
 
   console.log('Express: Routes Loaded');

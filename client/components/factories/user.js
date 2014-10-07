@@ -17,8 +17,8 @@
     }
 
     function update(user){
-      console.log('user update,  user factory>>>>>>>>', user);
-      return $http.update('/update', user);
+      console.log('user in update function, user factory>>>>>>>>', user);
+      return $http.post('/profile', user);
     }
 
     function findById(){

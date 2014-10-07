@@ -15,19 +15,18 @@
 
     $scope.update = function(){
       User.update($scope.user).then(success, failure);
-      console.log('success in profile controller>>>>>>>', success);
-      console.log('failure in profile controller>>>>>>>', failure);
       $scope.showForm = false;
     };
 
     function success(response){
-      toastr.success('User successfully registered.');
-      $location.path('/login');
+      $scope.user = response.data.user;
+      toastr.success('User successfully updated.');
+      $location.path('/profile');
     }
 
     function failure(response){
-      toastr.error('Error during user registration, try again.');
-      $scope.user = {};
+      toastr.error('Error during update, please try again.');
+      $location.path('/profile');
     }
 
   }]);

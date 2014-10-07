@@ -17,7 +17,6 @@
     }
 
     function update(user){
-      console.log('user in update function, user factory>>>>>>>>', user);
       return $http.post('/profile', user);
     }
 

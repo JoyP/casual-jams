@@ -1,27 +1,33 @@
 .row
-  .col-xs-4
-  .col-xs-4
+  .col-xs-5
+  .col-xs-2
     h3 Profile
-  .col-xs-4
+  .col-xs-5
 
 .row
-  .col-xs-9
-  .col-xs-3
-    button.btn.btn-danger(ng-click='toggleUpdate()', ng-hide='showForm') Update Profile
-
-.row
+  .col-xs-2
   .col-xs-8
     .panel
-      .panel-body
+      .panel-body#profile
         .row
           .col-xs-12
-            h5 {{user.name}}
+            h4 {{user.name}}
             h5 {{user.email}}
             h5 {{user.location}}
-            h5 {{user.instruments}}
+            h5 {{user.instrument}}
+            h5 {{user.musicStyle}}
+            h5 {{user.bio}}
+  .col-xs-2
 
 .row
-  .col-xs-3
+  .col-xs-2
+  .col-xs-2
+    button.btn.btn-danger(ng-click='toggleUpdate()', ng-hide='showForm') Update Profile
+  .col-xs-8
+
+.row
+  .col-xs-2
+  .col-xs-4
     form(role='form', novalidate, name='updateForm', ng-show='showForm')
       .form-group
         label(for='name') Name
@@ -42,4 +48,4 @@
         label(for='bio') About Me
         input.form-control#bio(type='textarea', name='bio', ng-model='user.bio')
       button.btn.btn-danger(ng-show='updateForm.$valid', ng-click='update()') Update Profile
-  .col-xs-9
+  .col-xs-2

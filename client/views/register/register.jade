@@ -9,6 +9,6 @@ h3 Register
       .form-group
         label(for='password') Password
         input.form-control#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3')
-      button.btn.btn-primary(ng-show='userForm.$valid', ng-click='register()') Register
+      button.btn.btn-danger(ng-show='userForm.$valid', ng-click='register()') Register
   .col-xs-9
 

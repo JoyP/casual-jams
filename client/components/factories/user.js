@@ -17,10 +17,15 @@
     }
 
     function update(user){
+      console.log('user update,  user factory>>>>>>>>', user);
       return $http.update('/update', user);
     }
 
-    return {register:register, login:login, logout:logout, update:update};
+    function findById(){
+      return $http.get('/profile');
+    }
+
+    return {register:register, login:login, logout:logout, update:update, findById:findById};
   }]);
 })();
 

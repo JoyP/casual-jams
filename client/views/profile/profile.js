@@ -5,12 +5,19 @@
   .controller('ProfileCtrl', ['$scope', '$location', 'User', function($scope, $location, User){
     $scope.user = {};
 
+    User.findById().then(function(response){
+      $scope.user = response.data.user;
+    });
+
     $scope.toggleUpdate = function(){
-      $scope.update = !!!$scope.update;
+      $scope.showForm = !!!$scope.showForm;
     };
 
     $scope.update = function(){
       User.update($scope.user).then(success, failure);
+      console.log('success in profile controller>>>>>>>', success);
+      console.log('failure in profile controller>>>>>>>', failure);
+      $scope.showForm = false;
     };
 
     function success(response){

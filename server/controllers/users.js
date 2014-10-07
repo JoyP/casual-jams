@@ -35,7 +35,16 @@ exports.logout = function(req, res){
   });
 };
 
+exports.find = function(req, res){
+  User.findById(req.user._id, function(err, user){
+    res.send({user:user});
+  });
+};
+
 exports.update = function(req,res){
+  console.log('req.session.userId in exports.update>>>>>>', req.session.userId);
+  console.log('req.body in exports.update>>>>>>', req.body);
+
   User.findById(req.session.userId, function(err,user){
     user.save(req.body, function(err, contact){
       res.send({user:user});

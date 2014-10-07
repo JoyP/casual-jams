@@ -11,6 +11,7 @@ Object.defineProperty(User, 'collection', {
 });
 
 User.findById = function(id, cb){
+  console.log('id in User.findById>>>>>>>', id);
   var _id = Mongo.ObjectID(id);
   User.collection.findOne({_id:_id}, cb);
 };
@@ -33,6 +34,8 @@ User.login = function(o, cb){
 };
 
 User.prototype.save = function(fields, cb){
+  console.log('fields in User.prototype.save>>>>>>>', fields);
+  // TO DO: check email against database so there are no duplicates upon update
   var properties = Object.keys(fields),
       self       = this;
 

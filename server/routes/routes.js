@@ -8,7 +8,8 @@ var morgan         = require('morgan'),
     debug          = require('../lib/debug'),
     security       = require('../lib/security'),
     home           = require('../controllers/home'),
-    users          = require('../controllers/users');
+    users          = require('../controllers/users'),
+    sessions       = require('../controllers/sessions');
 
 module.exports = function(app, express){
   app.use(morgan('dev'));
@@ -29,6 +30,7 @@ module.exports = function(app, express){
   app.use(security.bounce);
   app.post('/profile', users.update);
   app.get('/profile', users.find);
+  app.post('/newSession', sessions.create);
 
   console.log('Express: Routes Loaded');
 };

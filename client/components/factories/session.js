@@ -9,7 +9,11 @@
       return $http.post('/newSession', sessionInfo);
     }
 
-    return {create:create};
+    function findAll(){
+      return $http.get('/findSessions');
+    }
+
+    return {create:create, findAll:findAll};
   }]);
 })();
 

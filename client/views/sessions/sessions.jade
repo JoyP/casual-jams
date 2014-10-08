@@ -23,8 +23,8 @@
         label(for='style') Session Style
         input.form-control#style(type='text', name='style', ng-model='newSession.style')
       .form-group
-        label(for='location') Location
-        input.form-control#location(type='text', name='location', ng-model='newSession.loc.city')
+        label(for='loc') Location
+        input.form-control#location(type='text', name='loc', ng-model='newSession.loc.city')
       .form-group
         label(for='date') Date
         input.form-control#date(type='date', name='date', ng-model='newSession.date')
@@ -37,7 +37,7 @@
 .row(ng-show='find')
   .col-xs-12
     h4 Find Sessions
-    table#sessions.table.table-bordered.table-striped
+    table.table.table-bordered
       thead
         tr
           th Name
@@ -46,17 +46,17 @@
           th Date
           th Time
       tbody
-        tr
-          td name
-          td location
-          td style
-          td date
-          td time
+        tr(ng-repeat= 'session in findSessions')
+          td {{session.name}}
+          td {{session.loc.city}}
+          td {{session.style}}
+          td {{session.date}}
+          td {{session.time}}
 
 .row(ng-show='my')
   .col-xs-12
     h4 My Sessions
-    table#mySessions.table.table-bordered.table-striped
+    table.table.table-bordered.sessions
       thead
         tr
           th Name
@@ -66,8 +66,8 @@
           th Time
       tbody
         tr
-          td name
-          td location
-          td style
-          td date
-          td time
+          td session.name
+          td session.loc.city
+          td session.style
+          td session.date
+          td session.time

@@ -6,7 +6,7 @@ function Session(){
 }
 
 Object.defineProperty(Session, 'collection', {
-  get: function(){return global.mongodb.collection('session');}
+  get: function(){return global.mongodb.collection('sessions');}
 });
 
 Session.create = function(o, cb){
@@ -23,6 +23,10 @@ Session.findById = function(id, cb){
     //console.log('user in User model, User.findbyId>>>>', user);
     cb(err, session);
   });
+};
+
+Session.findAll = function(cb){
+  Session.collection.find().toArray(cb);
 };
 
 //Session.find = function(filter, cb){

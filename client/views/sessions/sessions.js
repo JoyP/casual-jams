@@ -33,11 +33,10 @@
 
     $scope.addNew = function(){
       console.log('$scope.newSession in views controller>>>>>', $scope.newSession);
-      Session.create($scope.newSession).then(function(err, response){
+      Session.create($scope.newSession).then(function(response){
         console.log('response in Session create in sessions controller>>>>>>>>', response);
-        console.log('err in Session create in sessions controller>>>>>>>>', err);
-        //$scope.findSessions.push(response.data.session);
-        //$scope.mySessions.push(response.data.session);
+        $scope.findSessions.push(response.data.session);
+        $scope.mySessions.push(response.data.session);
       });
       $scope.newSession = {};
       $scope.showMySessions();

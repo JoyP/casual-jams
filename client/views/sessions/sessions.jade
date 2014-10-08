@@ -45,12 +45,12 @@
           th Style
           th Date
           th Time
-      tbody
+      tbody#findSessions
         tr(ng-repeat= 'session in findSessions')
           td {{session.name}}
           td {{session.loc.city}}
           td {{session.style}}
-          td {{session.date}}
+          td {{session.date | date:fullDate}}
           td {{session.time}}
 
 .row(ng-show='my')

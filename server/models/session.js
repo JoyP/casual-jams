@@ -2,7 +2,12 @@
 
 var Mongo  = require('mongodb');
 
-function Session(){
+function Session(o){
+  this.name   = o.name;
+  this.style  = o.style;
+  this.loc    = o.loc;
+  this.date   = new Date(o.date);
+  this.time   = o.time;
 }
 
 Object.defineProperty(Session, 'collection', {
@@ -11,8 +16,8 @@ Object.defineProperty(Session, 'collection', {
 
 Session.create = function(o, cb){
   console.log('o in Session.create in controller>>>>>', o);
-  o.date = new Date(o.date);
-  Session.collection.save(o, cb);
+  var s = new Session(o);
+  Session.collection.save(s, cb);
 };
 
 Session.findById = function(id, cb){

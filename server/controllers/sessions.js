@@ -10,7 +10,7 @@ exports.create = function(req, res){
   Session.create(req.body, function(err, session){
     console.log('session after create function called in controller>>>>>>', session);
     if(session){
-      res.status(200).end();
+      res.send({session:session});
     }else{
       res.status(400).end();
     }

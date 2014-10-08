@@ -29,12 +29,12 @@
 //    };
 
 //    function success(response){
-//      toastr.success('User successfully registered.');
-//      $location.path('/login');
+//      toastr.success('New session created!');
+//      $location.path('/sessions');
 //    }
 
 //    function failure(response){
-//      toastr.error('Error during user registration, try again.');
+//      toastr.error('Error during session creation, please try again.');
 //      $scope.user = {};
 //    }
 

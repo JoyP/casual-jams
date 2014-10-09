@@ -3,12 +3,13 @@
 var Mongo  = require('mongodb');
 
 function Session(userId, o){
-  this.name   = o.name;
-  this.style  = o.style;
-  this.loc    = o.loc;
-  this.date   = new Date(o.date);
-  this.time   = o.time;
-  this.hostId = Mongo.ObjectID(userId);
+  this.name     = o.name;
+  this.style    = o.style;
+  this.loc      = o.loc;
+  this.date     = new Date(o.date);
+  this.time     = o.time;
+  this.hostId   = Mongo.ObjectID(userId);
+  this.members  = [];
 }
 
 Object.defineProperty(Session, 'collection', {

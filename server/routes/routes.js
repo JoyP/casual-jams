@@ -31,7 +31,8 @@ module.exports = function(app, express){
   app.post('/profile', users.update);
   app.get('/profile', users.find);
   app.post('/newSession', sessions.create);
-  app.get('/findSessions', sessions.findAll);
+  app.get('/findSessions', sessions.index);
+  app.get('/showSession', sessions.show);
 
   console.log('Express: Routes Loaded');
 };

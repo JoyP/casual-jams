@@ -34,6 +34,26 @@
       button.btn.btn-danger(ng-show='newForm.$valid', ng-click='addNew()') Create
   .col-xs-9
 
+.row(ng-show='show')
+  .col-xs-8
+    .panel
+      .panel-body#show
+        .row
+          .col-xs-6
+            h4 {{session.name}}
+            h5 Style: {{session.style}}
+            h5 {{session.date | date:fullDate}}
+            h5 {{session.time | date: 'h:mma'}}
+            h5 {{session.loc.city}}
+          .col-xs-6
+            h4 Hosted by:
+            h5 session.hostId-name
+        .row
+          .col-xs-6
+            h4 Attending:
+            h5 ng-repeat members
+  .col-xs-4
+
 .row(ng-show='find')
   .col-xs-12
     h4 Find Sessions
@@ -46,7 +66,7 @@
           th Time
           th Location
       tbody#findSessions
-        tr(ng-repeat= 'session in findSessions')
+        tr(ng-repeat= 'session in findSessions', ng-click= 'showSession(session)', data-id= '{{session._id}}')
           td {{session.name}}
           td {{session.style}}
           td {{session.date | date:fullDate}}
@@ -71,3 +91,4 @@
           td session.date
           td session.time
           td session.loc.city
+

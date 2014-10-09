@@ -16,7 +16,6 @@ Object.defineProperty(Session, 'collection', {
 });
 
 Session.create = function(userId, o, cb){
-  console.log('o in Session.create in controller>>>>>', o);
   var s = new Session(userId, o);
   Session.collection.save(s, cb);
 };
@@ -26,7 +25,6 @@ Session.findById = function(id, cb){
   Session.collection.findOne({_id:_id}, function(err, obj){
     var session = Object.create(Session.prototype);
     session = _.extend(session, obj);
-    //console.log('user in User model, User.findbyId>>>>', user);
     cb(err, session);
   });
 };
@@ -41,6 +39,24 @@ Session.findAll = function(cb){
 //  });
 //};
 
+Session.prototype.save = function(fields, cb){
+  var properties = Object.keys(fields),
+      self       = this;
+
+  properties.forEach(function(property){
+    switch(property){
+      case 'date':
+        self.date = new Date(fields[property]);
+        break;
+      default:
+        self[property] = fields[property];
+      }
+  });
+
+  this.hostId = Mongo.ObjectID(this.hostId);
+  this._id = Mongo.ObjectID(this._id);
+  Session.collection.save(this, cb);
+};
 
 module.exports = Session;
 

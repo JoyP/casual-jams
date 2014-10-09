@@ -6,8 +6,6 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-  console.log('req.user._id in exports.create>>>>>', req.user._id);
-  console.log('req.session.userId in exports.create>>>>>', req.session.userId);
   Session.create(req.user._id, req.body, function(err, session){
     if(session){
       res.send({session:session});

@@ -12,12 +12,10 @@ Object.defineProperty(User, 'collection', {
 });
 
 User.findById = function(id, cb){
-  //console.log('id in User model, User.findById>>>>>>>', id);
   var _id = Mongo.ObjectID(id);
   User.collection.findOne({_id:_id}, function(err, obj){
     var user = Object.create(User.prototype);
     user = _.extend(user, obj);
-    //console.log('user in User model, User.findbyId>>>>', user);
     cb(err, user);
   });
 };

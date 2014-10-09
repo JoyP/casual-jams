@@ -2,21 +2,22 @@
 
 var Mongo  = require('mongodb');
 
-function Session(o){
+function Session(userId, o){
   this.name   = o.name;
   this.style  = o.style;
   this.loc    = o.loc;
   this.date   = new Date(o.date);
   this.time   = o.time;
+  this.hostId = Mongo.ObjectID(userId);
 }
 
 Object.defineProperty(Session, 'collection', {
   get: function(){return global.mongodb.collection('sessions');}
 });
 
-Session.create = function(o, cb){
+Session.create = function(userId, o, cb){
   console.log('o in Session.create in controller>>>>>', o);
-  var s = new Session(o);
+  var s = new Session(userId, o);
   Session.collection.save(s, cb);
 };
 

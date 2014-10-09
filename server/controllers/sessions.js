@@ -6,9 +6,9 @@ exports.index = function(req, res){
 };
 
 exports.create = function(req, res){
-  console.log('req.body in exports.create>>>>>>', req.body);
-  Session.create(req.body, function(err, session){
-    console.log('session after create function called in controller>>>>>>', session);
+  console.log('req.user._id in exports.create>>>>>', req.user._id);
+  console.log('req.session.userId in exports.create>>>>>', req.session.userId);
+  Session.create(req.user._id, req.body, function(err, session){
     if(session){
       res.send({session:session});
     }else{
@@ -19,7 +19,6 @@ exports.create = function(req, res){
 
 exports.findAll = function(req, res){
   Session.findAll(function(err, sessions){
-    console.log('sessions after findAll function in exports.findAll>>>>>>>>', sessions);
     res.send({sessions:sessions});
   });
 };

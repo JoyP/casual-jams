@@ -46,6 +46,9 @@
     $scope.showSession = function(session){
       $scope.show = true;
       $scope.session = session;
+      Session.findUsers(session).then(function(response){
+        console.log('response.data in $scope.showSession>>>>>>>', response.data);
+      });
     };
 
 //    function success(response){

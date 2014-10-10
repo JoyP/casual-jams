@@ -13,7 +13,11 @@
       return $http.get('/findSessions');
     }
 
-    return {create:create, findAll:findAll};
+    function findUsers(session){
+      return $http.get('/showSession', session);
+    }
+
+    return {create:create, findAll:findAll, findUsers:findUsers};
   }]);
 })();
 

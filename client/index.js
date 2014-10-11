@@ -9,7 +9,7 @@
     .when('/login',    {templateUrl:'/views/login/login.html',       controller:'LoginCtrl'})
     .when('/logout',   {templateUrl:'/views/logout/logout.html',     controller:'LogoutCtrl'})
     .when('/profile',  {templateUrl:'/views/profile/profile.html',   controller:'ProfileCtrl'})
-    .when('/sessions',  {templateUrl:'/views/sessions/sessions.html',   controller:'SessionsCtrl'})
+    .when('/jam-sessions',  {templateUrl:'/views/jamSessions/jamSessions.html',   controller:'JamSessionsCtrl'})
     .otherwise({redirectTo:'/'});
 
     $httpProvider.interceptors.push('HttpInterceptor');

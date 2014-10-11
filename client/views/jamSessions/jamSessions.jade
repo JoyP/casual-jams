@@ -40,14 +40,14 @@
       .panel-body#show
         .row
           .col-xs-6
-            h4 {{session.name}}
-            h5 Style: {{session.style}}
-            h5 {{session.date | date:fullDate}}
-            h5 {{session.time | date: 'h:mma'}}
-            h5 {{session.loc.city}}
+            h4 {{jamSession.name}}
+            h5 Style: {{jamSession.style}}
+            h5 {{jamSession.date | date:fullDate}}
+            h5 {{jamSession.time | date: 'h:mma'}}
+            h5 {{jamSession.loc.city}}
           .col-xs-6
             h4 Hosted by:
-            h5 session.hostId-name
+            h5 jamSession.hostId-name
         .row
           .col-xs-6
             h4 Attending:
@@ -68,12 +68,12 @@
           th Time
           th Location
       tbody#findSessions
-        tr(ng-repeat= 'session in findSessions', ng-click= 'showSession(session)', data-id= '{{session._id}}')
-          td {{session.name}}
-          td {{session.style}}
-          td {{session.date | date:fullDate}}
-          td {{session.time | date:'h:mma'}}
-          td {{session.loc.city}}
+        tr(ng-repeat= 'jamSession in findSessions', ng-click= 'showSession(jamSession)', data-id= '{{jamSession._id}}')
+          td {{jamSession.name}}
+          td {{jamSession.style}}
+          td {{jamSession.date | date:fullDate}}
+          td {{jamSession.time | date:'h:mma'}}
+          td {{jamSession.loc.city}}
 
 .row(ng-show='my')
   .col-xs-12
@@ -88,9 +88,9 @@
           th Location
       tbody
         tr
-          td session.name
-          td session.style
-          td session.date
-          td session.time
-          td session.loc.city
+          td jamSession.name
+          td jamSession.style
+          td jamSession.date
+          td jamSession.time
+          td jamSession.loc.city
 

@@ -2,15 +2,15 @@
   'use strict';
 
   angular.module('casual-jams')
-  .controller('SessionsCtrl', ['$scope', '$location', 'Session', function($scope, $location, Session){
-    $scope.session      = {};
+  .controller('JamSessionsCtrl', ['$scope', '$location', 'JamSession', function($scope, $location, JamSession){
+    $scope.jamSession   = {};
     $scope.newSession   = {};
     $scope.findSessions = [];
     $scope.mySessions   = [];
     $scope.find         = true;
 
-    Session.findAll().then(function(response){
-      $scope.findSessions = response.data.sessions;
+    JamSession.findAll().then(function(response){
+      $scope.findSessions = response.data.jamSessions;
     });
 
     $scope.showNew = function(){
@@ -35,18 +35,18 @@
     };
 
     $scope.addNew = function(){
-      Session.create($scope.newSession).then(function(response){
-        $scope.findSessions.push(response.data.session);
-        $scope.mySessions.push(response.data.session);
+      JamSession.create($scope.newSession).then(function(response){
+        $scope.findSessions.push(response.data.jamSession);
+        $scope.mySessions.push(response.data.jamSession);
       });
       $scope.newSession = {};
       $scope.showMySessions();
     };
 
-    $scope.showSession = function(session){
+    $scope.showSession = function(jamSession){
       $scope.show = true;
-      $scope.session = session;
-      Session.findUsers(session).then(function(response){
+      $scope.jamSession = jamSession;
+      JamSession.findSessionUsers(jamSession).then(function(response){
         console.log('response.data in $scope.showSession>>>>>>>', response.data);
       });
     };

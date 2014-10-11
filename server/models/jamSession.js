@@ -2,7 +2,7 @@
 
 var Mongo  = require('mongodb');
 
-function Session(userId, o){
+function JamSession(userId, o){
   this.name     = o.name;
   this.style    = o.style;
   this.loc      = o.loc;
@@ -12,26 +12,26 @@ function Session(userId, o){
   this.members  = [];
 }
 
-Object.defineProperty(Session, 'collection', {
-  get: function(){return global.mongodb.collection('sessions');}
+Object.defineProperty(JamSession, 'collection', {
+  get: function(){return global.mongodb.collection('jamSessions');}
 });
 
-Session.create = function(userId, o, cb){
-  var s = new Session(userId, o);
-  Session.collection.save(s, cb);
+JamSession.create = function(userId, o, cb){
+  var s = new JamSession(userId, o);
+  JamSession.collection.save(s, cb);
 };
 
-Session.findById = function(id, cb){
+JamSession.findById = function(id, cb){
   var _id = Mongo.ObjectID(id);
-  Session.collection.findOne({_id:_id}, function(err, obj){
-    var session = Object.create(Session.prototype);
-    session = _.extend(session, obj);
-    cb(err, session);
+  JamSession.collection.findOne({_id:_id}, function(err, obj){
+    var jamSession = Object.create(JamSession.prototype);
+    jamSession = _.extend(jamSession, obj);
+    cb(err, jamSession);
   });
 };
 
-Session.findAll = function(cb){
-  Session.collection.find().toArray(cb);
+JamSession.findAll = function(cb){
+  JamSession.collection.find().toArray(cb);
 };
 
 //Session.find = function(filter, cb){
@@ -40,7 +40,7 @@ Session.findAll = function(cb){
 //  });
 //};
 
-Session.prototype.save = function(fields, cb){
+JamSession.prototype.save = function(fields, cb){
   var properties = Object.keys(fields),
       self       = this;
 
@@ -56,8 +56,8 @@ Session.prototype.save = function(fields, cb){
 
   this.hostId = Mongo.ObjectID(this.hostId);
   this._id = Mongo.ObjectID(this._id);
-  Session.collection.save(this, cb);
+  JamSession.collection.save(this, cb);
 };
 
-module.exports = Session;
+module.exports = JamSession;
 

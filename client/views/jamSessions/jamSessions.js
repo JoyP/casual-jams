@@ -63,9 +63,6 @@
       JamSession.findSessionUsers($scope.jamSession.hostId, $scope.jamSession.members).then(function(response){
         $scope.host = response.data.user;
         $scope.members = response.data.members;
-        console.log('activeUser in showSession>>>>', $scope.activeUser);
-        console.log('host.email in showSession>>>>', $scope.host.email);
-        console.log('email in showSession>>>>', $scope.email);
         $scope.activeUser = ($scope.host.email===$scope.email) ? true : false;
       });
     };
@@ -75,6 +72,14 @@
       $scope.memberInfo = user;
     };
 
+    $scope.joinSession = function(session){
+      JamSession.join(session).then(function(response){
+        console.log('response.data in $scope.joinSession>>>', response.data);
+        $scope.jamSession = response.data.jamSession;
+        $scope.jamSession.members.push(response.data.user);
+        $scope.showMySessions();
+      });
+    };
 //    function success(response){
 //      toastr.success('New session created!');
 //      $location.path('/sessions');

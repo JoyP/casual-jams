@@ -59,7 +59,7 @@
             h4 Attending:
             h5.userName(ng-repeat= 'member in members', ng-click='showUser(member)') {{member.name}}
           .col-xs-6
-            button.btn.btn-danger(ng-hide='activeUser') Join Session!
+            button.btn.btn-danger(ng-hide='activeUser', ng-click='joinSession(jamSession)') Join Session!
   .col-xs-4
 
 .row(ng-show='userInfo')
@@ -105,36 +105,39 @@
 .row(ng-show='my')
   .col-xs-12
     h3 My Sessions
-    h4 Joined Sessions
-    table.table.table-bordered.sessions
-      thead
-        tr
-          th Name
-          th Style
-          th Date
-          th Time
-          th Location
-      tbody.sessionHover
-        tr(ng-repeat='jamSession in joinedSessions', ng-click= 'showSession(jamSession)')
-          td {{jamSession.name}}
-          td {{jamSession.style}}
-          td {{jamSession.date | date:fullDate}}
-          td {{jamSession.time | date:'h:mma'}}
-          td {{jamSession.loc.city}}
+  .row &nbsp
+  .row
+    .col-xs-12
+      h4 Joined Sessions
+      table.table.table-bordered.sessions
+        thead
+          tr
+            th Name
+            th Style
+            th Date
+            th Time
+            th Location
+        tbody.sessionHover
+          tr(ng-repeat='jamSession in joinedSessions', ng-click= 'showSession(jamSession)')
+            td {{jamSession.name}}
+            td {{jamSession.style}}
+            td {{jamSession.date | date:fullDate}}
+            td {{jamSession.time | date:'h:mma'}}
+            td {{jamSession.loc.city}}
 
-    h4 Hosted Sessions
-    table.table.table-bordered.sessions
-      thead
-        tr
-          th Name
-          th Style
-          th Date
-          th Time
-          th Location
-      tbody.sessionHover
-        tr(ng-repeat='jamSession in hostedSessions', ng-click= 'showSession(jamSession)')
-          td {{jamSession.name}}
-          td {{jamSession.style}}
-          td {{jamSession.date | date:fullDate}}
-          td {{jamSession.time | date:'h:mma'}}
-          td {{jamSession.loc.city}}
+      h4 Hosted Sessions
+      table.table.table-bordered.sessions
+        thead
+          tr
+            th Name
+            th Style
+            th Date
+            th Time
+            th Location
+        tbody.sessionHover
+          tr(ng-repeat='jamSession in hostedSessions', ng-click= 'showSession(jamSession)')
+            td {{jamSession.name}}
+            td {{jamSession.style}}
+            td {{jamSession.date | date:fullDate}}
+            td {{jamSession.time | date:'h:mma'}}
+            td {{jamSession.loc.city}}

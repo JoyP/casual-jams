@@ -1,6 +1,7 @@
 'use strict';
 
 var Mongo  = require('mongodb'),
+    _      = require('underscore'),
     async  = require('async');
 
 function JamSession(userId, o){
@@ -41,6 +42,16 @@ JamSession.findByHost = function(id, cb){
   JamSession.collection.find({hostId:_id}).toArray(cb);
 };
 
+JamSession.findJoinedSessions = function(idArray, cb){
+  if(!idArray){return cb();}
+  // loops through session array to find session objects
+  var jamSessions  = [];
+  async.map(idArray, findEach, function(err, result){
+    jamSessions = result;
+    cb(err, jamSessions);
+  });
+};
+
 JamSession.prototype.save = function(fields, cb){
   var properties = Object.keys(fields),
       self       = this;
@@ -60,13 +71,9 @@ JamSession.prototype.save = function(fields, cb){
   JamSession.collection.save(this, cb);
 };
 
-JamSession.findJoinedSessions = function(idArray, cb){
-  var jamSessions  = [];
-  // loops through session array to find session objects
-  async.map(idArray, findEach, function(err, result){
-    jamSessions = result;
-    cb(err, jamSessions);
-  });
+JamSession.prototype.join = function(userId, cb){
+  this.members.push(userId);
+  JamSession.collection.save(this,cb);
 };
 
 module.exports = JamSession;
@@ -77,3 +84,4 @@ function findEach(sessionId, cb){
     cb(err, session);
   });
 }
+

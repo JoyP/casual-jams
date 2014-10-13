@@ -31,8 +31,9 @@ jamSessions
 - [x] User registration and login
 - [x] User profile
 - [x] Find sessions
+- [x] View session details
 - [x] Create and host sessions
-- [ ] Join sessions
+- [x] Join sessions
 
 ### Running Tests
 ```bash

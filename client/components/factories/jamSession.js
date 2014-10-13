@@ -21,7 +21,11 @@
       return $http.get('/mySessions');
     }
 
-    return {create:create, findAll:findAll, findSessionUsers:findSessionUsers, findMySessions:findMySessions};
+    function join(jamSession){
+      return $http.post('/joinSession', {jamSession:jamSession});
+    }
+
+    return {create:create, findAll:findAll, findSessionUsers:findSessionUsers, findMySessions:findMySessions, join:join};
   }]);
 })();
 

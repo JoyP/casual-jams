@@ -1,37 +1,38 @@
-## name of project
+## Casual James
 ### Code Badges
 build status icon
-coverage status icon
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
+![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.PNG)
+![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.PNG)
 
 ### Description
-write a description about your project
+Musicians jamming together in relaxed environments. Create a profile to join jam sessions near you!
 
 ### Models
 ```
-Model 1
+User
 ```
 
 ```
-Model 2
+JamSession
 ```
 
 ### Database
 ```
-Collecion 1
+users
 ```
 
 ```
-Collection 2
+jamSessions
 ```
 
 ### Features
-- [x] Feature 1
-- [ ] Feature 2
-- [x] Feature 3
+- [x] User registration and login
+- [x] User profile
+- [x] Find sessions
+- [x] Create and host sessions
+- [ ] Join sessions
 
 ### Running Tests
 ```bash
@@ -39,8 +40,8 @@ $ npm install
 $ npm test
 ```
 
-### Contributors
-- [Chyld Medford](https://github.com/chyld)
+### Author
+- [Joy Pratt](https://github.com/JoyP)
 
 ### License
 [MIT](LICENSE)

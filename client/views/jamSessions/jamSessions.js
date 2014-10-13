@@ -46,6 +46,7 @@
     $scope.showSession = function(jamSession){
       $scope.show = true;
       $scope.jamSession = jamSession;
+      console.log('$scope.jamSession in $scope.showSession', $scope.jamSession);
       JamSession.findSessionUsers(jamSession).then(function(response){
         console.log('response.data in $scope.showSession>>>>>>>', response.data);
       });

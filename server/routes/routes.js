@@ -33,6 +33,7 @@ module.exports = function(app, express){
   app.post('/newSession', jamSessions.create);
   app.get('/findSessions', jamSessions.index);
   app.post('/showSession', jamSessions.show);
+  app.get('/mySessions', jamSessions.mySessions);
 
   console.log('Express: Routes Loaded');
 };

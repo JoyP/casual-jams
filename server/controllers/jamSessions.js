@@ -27,3 +27,13 @@ exports.show = function(req, res){
     });
   });
 };
+
+exports.mySessions = function(req, res){
+  JamSession.findByHost(req.user._id, function(err, hostedSessions){
+    JamSession.findJoinedSessions(req.user.joinedSessions, function(err, joinedSessions){
+      console.log('hostedSessions in exports.mySessions>>>>>>', hostedSessions);
+      console.log('joinedSessions in exports.mySessions>>>>>>', joinedSessions);
+      res.send({hosted:hostedSessions, joined:joinedSessions});
+    });
+  });
+};

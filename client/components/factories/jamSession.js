@@ -14,12 +14,14 @@
     }
 
     function findSessionUsers(hostId, members){
-      console.log('hostId in session controller', hostId);
-      console.log('members in session controller', members);
       return $http.post('/showSession', {hostId:hostId, members:members});
     }
 
-    return {create:create, findAll:findAll, findSessionUsers:findSessionUsers};
+    function findMySessions(){
+      return $http.get('/mySessions');
+    }
+
+    return {create:create, findAll:findAll, findSessionUsers:findSessionUsers, findMySessions:findMySessions};
   }]);
 })();
 

@@ -1,10 +1,12 @@
 'use strict';
 
-var Mongo  = require('mongodb');
+var Mongo  = require('mongodb'),
+    async  = require('async');
 
 function JamSession(userId, o){
   this.name     = o.name;
   this.style    = o.style;
+  this.details  = o.details;
   this.loc      = o.loc;
   this.date     = new Date(o.date);
   this.time     = o.time;
@@ -34,11 +36,10 @@ JamSession.findAll = function(cb){
   JamSession.collection.find().toArray(cb);
 };
 
-//Session.find = function(filter, cb){
-//  Session.collection.findOne({filter}, function(err, session){
-//    cb(session);
-//  });
-//};
+JamSession.findByHost = function(id, cb){
+  var _id = Mongo.ObjectID(id);
+  JamSession.collection.find({hostId:_id}).toArray(cb);
+};
 
 JamSession.prototype.save = function(fields, cb){
   var properties = Object.keys(fields),
@@ -59,5 +60,20 @@ JamSession.prototype.save = function(fields, cb){
   JamSession.collection.save(this, cb);
 };
 
+JamSession.findJoinedSessions = function(idArray, cb){
+  var jamSessions  = [];
+  // loops through session array to find session objects
+  async.map(idArray, findEach, function(err, result){
+    jamSessions = result;
+    cb(err, jamSessions);
+  });
+};
+
 module.exports = JamSession;
 
+function findEach(sessionId, cb){
+  sessionId = Mongo.ObjectID(sessionId);
+  JamSession.collection.findOne({_id:sessionId}, function(err, session){
+    cb(err, session);
+  });
+}

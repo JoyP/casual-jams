@@ -3,8 +3,8 @@
 build status icon
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.PNG)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.PNG)
+![Image1](https://raw.githubusercontent.com/JoyP/casual-jams/master/docs/screenshots/one.png)
+![Image2](https://raw.githubusercontent.com/JoyP/casual-jams/master/docs/screenshots/two.png)
 
 ### Description
 Musicians jamming together in relaxed environments. Create a profile to join jam sessions near you!

@@ -34,6 +34,7 @@ User.register = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
     if(user || o.password.length < 3){return cb();}
     o.password = bcrypt.hashSync(o.password, 10);
+    o.joinedSessions = [];
     User.collection.save(o, cb);
   });
 };

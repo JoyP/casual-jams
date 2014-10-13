@@ -48,9 +48,10 @@
           .col-xs-6
             h4 {{jamSession.name}}
             h5 Style: {{jamSession.style}}
-            h5 {{jamSession.date | date:fullDate}}
-            h5 {{jamSession.time | date: 'h:mma'}}
-            h5 {{jamSession.loc.city}}
+            h5 Notes: {{jamSession.details}}
+            h5 Date: {{jamSession.date | date:fullDate}}
+            h5 Time: {{jamSession.time | date: 'h:mma'}}
+            h5 Adress: {{jamSession.loc.address}}, {{jamSession.loc.city}}
           .col-xs-6
             h4 Hosted by:
             h5.userName(ng-click='showUser(host)') {{host.name}}

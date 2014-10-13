@@ -2,7 +2,8 @@
 
 var bcrypt = require('bcrypt'),
     _      = require('underscore'),
-    Mongo  = require('mongodb');
+    Mongo  = require('mongodb'),
+    async  = require('async');
 
 function User(){
 }
@@ -17,6 +18,15 @@ User.findById = function(id, cb){
     var user = Object.create(User.prototype);
     user = _.extend(user, obj);
     cb(err, user);
+  });
+};
+
+User.findMembers = function(idArray, cb){
+  var members  = [];
+  // loops through member array to find user objects
+  async.map(idArray, findEach, function(err, result){
+    members = result;
+    cb(err, members);
   });
 };
 
@@ -51,4 +61,14 @@ User.prototype.save = function(fields, cb){
 };
 
 module.exports = User;
+
+// HELPER FUNCTIONS
+
+function findEach(memberId, cb){
+  memberId = Mongo.ObjectID(memberId);
+  User.collection.findOne({_id:memberId}, function(err, member){
+    cb(err, member);
+  });
+}
+
 

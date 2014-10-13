@@ -47,11 +47,11 @@
             h5 {{jamSession.loc.city}}
           .col-xs-6
             h4 Hosted by:
-            h5 jamSession.hostId-name
+            h5 {{host.name}}
         .row
           .col-xs-6
             h4 Attending:
-            h5 ng-repeat members
+            h5(ng-repeat= 'member in members') {{ member.name}}
           .col-xs-6
             button.btn.btn-danger Join Session!
   .col-xs-4

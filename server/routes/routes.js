@@ -32,7 +32,7 @@ module.exports = function(app, express){
   app.get('/profile', users.find);
   app.post('/newSession', jamSessions.create);
   app.get('/findSessions', jamSessions.index);
-  app.get('/showSession/:jamSession._id', jamSessions.show);
+  app.post('/showSession', jamSessions.show);
 
   console.log('Express: Routes Loaded');
 };

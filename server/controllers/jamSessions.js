@@ -20,8 +20,10 @@ exports.index = function(req, res){
 };
 
 exports.show = function(req, res){
-  console.log('req.params in exprts.shw>>>>>>>>>>', req.params);
-  User.findById(req.params.hostId, function(err, user){
-    res.send({user:user});
+  User.findById(req.body.hostId, function(err, user){
+    User.findMembers(req.body.members, function(err, members){
+      // returns host object and member objects
+      res.send({user:user, members:members});
+    });
   });
 };

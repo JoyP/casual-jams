@@ -1,4 +1,4 @@
-## Casual James
+## Casual Jams
 ### Code Badges
 build status icon
 
